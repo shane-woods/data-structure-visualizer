@@ -29,7 +29,7 @@ class App extends React.Component {
             <tbody>
               <tr>
                 <td>
-                  <a href ="./Array.js"> 
+                  <a href ="#"> 
                     <Image className="dsIMG" src={arrayIMG} alt="Image of an Array"/>
                   </a>
                   <p className="IMGcap">Array</p>
