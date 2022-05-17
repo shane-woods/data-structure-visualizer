@@ -1,0 +1,21 @@
+
+.Cell {
+    border: 1px solid black;
+    display:table-cell;
+    min-height: 1em;
+    min-width: 1em;
+    text-align: center;
+    padding: 15px;
+}
+
+.Array {
+    position: absolute;
+    top: 20%;
+    left: 2.5%;
+    margin: 0 auto;
+}
+
+.Form {
+    position:fixed;
+    top: 10%;
+}

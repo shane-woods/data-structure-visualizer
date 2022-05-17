@@ -1,61 +1,61 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom';
 import Image from 'next/image'
+import Link from 'next/link'
 import arrayIMG from '../public/images/array.png'
 import linkedlistIMG from '../public/images/linkedlist.png'
 import bstIMG from '../public/images/bst.png'
+import Navbar from '../components/navbar';
+import styles from '../styles/Home.module.css'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        value: null,
-    };
-  }
 
-  render() {
-    return (
-      <div className="Home">
-        <nav className="Home-header">
-          <ul>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <div className="Home-page">
-          <h1>Data Structure Visualizer</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <a href ="#"> 
-                    <Image className="dsIMG" src={arrayIMG} alt="Image of an Array"/>
+const Home = () => {
+  return ( 
+    <div className={styles.Home}>
+      <Navbar />
+      <div className={styles.Homepage}>
+        <h1>Data Structure & Algorithm Visualizer</h1>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <Link href="/array">
+                  <a> 
+                    <div className={styles.dsIMG}>
+                      <Image src={arrayIMG} alt="Image of an Array"/>
+                    </div>
                   </a>
-                  <p className="IMGcap">Array</p>
-                </td>
-                <td>
-                  <a href="#">
-                    <Image className="dsIMG" src={linkedlistIMG} alt="Image of a Linked List"/>
+                </Link>
+                <p className={styles.IMGcap}>Array</p>
+              </td>
+              <td>
+                <Link href="#">
+                  <a>
+                    <div className={styles.dsIMG}>
+                      <Image src={linkedlistIMG} alt="Image of a Linked List"/>
+                    </div>
                   </a>
-                  <p className="IMGcap">Linked List</p>
-                </td>
-                <td>
-                  <a href="#">
-                    <Image className="dsIMG" src={bstIMG} alt="Image of a Binary Search Tree"/>
+                </Link>
+                <p className={styles.IMGcap}>Linked List</p>
+              </td>
+              <td>
+                <Link href="#">
+                  <a>
+                    <div className={styles.dsIMG}>
+                      <Image src={bstIMG} alt="Image of a Binary Search Tree"/>
+                    </div>
                   </a>
-                  <p className="IMGcap">Binary Search Tree</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </Link>
+                <p className={styles.IMGcap}>Binary Search Tree</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    );
-  }
+    </div>
+   );
 }
 
-export default App;
+export default Home;
 
 
 
