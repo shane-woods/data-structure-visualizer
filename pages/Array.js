@@ -20,18 +20,20 @@ function Array(props) {
   }
 
   return (
-    <div>
+    <div className={styles.Array}>
       {array}
     </div>
   );
 }
 
 function Form() {
-
-  const [size, setSize] = useState('');
-  const [isSubmitted, setTrue] = useState(false);
-  const [operation, setOperation] = useState("c");
+  const [size, setSize] = useState(5);
+  const [isSubmitted, showArray] = useState(true);
   const operations = [
+    {
+      label: "Search",
+      value: "search",
+    },
     {
       label: "Insert",
       value: "insert",
@@ -40,13 +42,7 @@ function Form() {
       label: "Delete",
       value: "delete",
     },
-    {
-      label: "Search",
-      value: "search",
-    }
   ];
-
-  console.log(size);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -54,13 +50,10 @@ function Form() {
 
   function handleChange(e) {
     setSize(e.target.value);
-    setTrue(false);
-    return {
-      size,
-    }
+    showArray(false);
   }
 
-  return{
+  return {
     size, 
     isSubmitted,
     renderForm:(
@@ -71,14 +64,15 @@ function Form() {
         required
         value={size}
         onChange={handleChange}
-        />
-        <button onClick={(e) => setTrue(true)}>Set</button>
+        className={styles.sizeInput}
+        /> 
         <label className={styles.Label}>Choose an operation: </label>
         <select>
           {operations.map((option) => (
             <option value={option.value}>{option.label}</option>
           ))}
         </select>
+        <button className={styles.Button} onClick={(e) => showArray(true)}>Visualize!</button>
       </form>
     )
   }
@@ -86,7 +80,25 @@ function Form() {
 
 function ArrayDS() {
 
-  const {array, size, isSubmitted, renderForm} = Form();
+  const {size, isSubmitted, renderForm} = Form();
+  var doInsert = false;
+  var doDelete = false;
+  var doSearch = false;
+
+//   if (isSubmitted) {
+//     if (label === "insert") {
+//       doInsert = true;
+//     } else if (label === "delete") {
+//       doDelete = true;
+//     } else if (label === "search") {
+//       doSearch = true;
+//     }
+// }
+
+// console.log(label);
+// console.log(doInsert);
+// console.log(doDelete);
+// console.log(doSearch);
 
   return (
     <div className={styles.ArrayPage}>
@@ -95,6 +107,15 @@ function ArrayDS() {
         <div className={styles.Array}>
           {isSubmitted && <Array size={size} />}
         </div>
+        {/* <div className={styles.Insert}>
+          {doInsert && <p>Inserting</p>}
+        </div>
+        <div className={styles.Delete}>
+          {doInsert && <p>Deleting</p>}
+        </div>
+        <div className={styles.Search}>
+          {doInsert && <p>Searching</p>}
+        </div> */}
       </div>
   );
 }

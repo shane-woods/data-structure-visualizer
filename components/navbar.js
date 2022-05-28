@@ -8,9 +8,9 @@ function Navbar() {
     return (
       <nav className={styles.Navbar}>
         <ul>
-          <Navitem icon={CaretIcon} path="projects"/>
-          <Navitem icon="About" path="about"/>
-          <Navitem icon="Contact" path="contact"/>
+          <Navitem label="Projects" path="projects"/>
+          <Navitem label="About" path="about"/>
+          <Navitem label="Contact" path="contact"/>
         </ul>
       </nav>
     );
@@ -19,10 +19,10 @@ function Navbar() {
 function Navitem(props) {
   const path = props.path;
   return (
-    <li>
+    <li className={styles.label}>
       <Link href={'/' + path}>
-        <a className={styles.icon}>
-          {props.icon}
+        <a className={styles.navLink}>
+          {props.label}
         </a>
       </Link>
     </li>

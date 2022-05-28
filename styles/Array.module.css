@@ -17,5 +17,17 @@
 
 .Form {
     position:fixed;
-    top: 10%;
+    top: 12.5%;
+}
+
+.Label {
+    margin-left: 1em;
+}
+
+.sizeInput {
+    margin: 0 3px;
+}
+
+.Button {
+    margin: 0 3px;
 }
