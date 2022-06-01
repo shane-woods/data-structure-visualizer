@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback} from 'react'
 import styles from '../styles/Array.module.css'
 import Navbar from '../components/navbar';
-const array = [];
 
 function Cell(props) {
   const value = props.value;
+  const color = props.color;
+  const borderWidth = props.borderWidth;
   return (
-    <div className={styles.Cell}>
+    <div className="Cell">
+      <style jsx> {`
+      .Cell {
+        border: ${borderWidth} solid ${color};
+        display:table-cell;
+        min-height: 1em;
+        min-width: 1em;
+        text-align: center;
+        padding: 15px;
+      }
+      `}</style>
       {value}
     </div>
   );
@@ -14,9 +25,14 @@ function Cell(props) {
 
 function Array(props) {
   const size = props.size;
+  const array = [];
   array.length = 0;
   for (let i = 0; i < size; i++) {
-    array[i] = <Cell value={Math.floor(Math.random() * 50)} />;
+    array[i] = <Cell 
+    color="red" 
+    value={Math.floor(Math.random() * 50)} 
+    borderWidth="1px"
+    />;
   }
 
   return (
@@ -26,9 +42,8 @@ function Array(props) {
   );
 }
 
-function Form() {
-  const [size, setSize] = useState(5);
-  const [isSubmitted, showArray] = useState(true);
+function SelectOperation() {
+  const [operation, setOperation] = useState();
   const operations = [
     {
       label: "Search",
@@ -43,6 +58,31 @@ function Form() {
       value: "delete",
     },
   ];
+
+   const setOp = useCallback (
+      (e) => {
+        e.preventDefault();
+        setOperation(e.target.value);
+      },
+      [operation]
+   );
+
+  return (
+    <select onChange={setOp}>
+        {operations.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
+    </select>
+  );
+}
+
+function Form() {
+  const [size, setSize] = useState(5);
+  const [isSubmitted, showArray] = useState();
+
+  useEffect(() =>  {
+    showArray(true);
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -67,11 +107,7 @@ function Form() {
         className={styles.sizeInput}
         /> 
         <label className={styles.Label}>Choose an operation: </label>
-        <select>
-          {operations.map((option) => (
-            <option value={option.value}>{option.label}</option>
-          ))}
-        </select>
+        <SelectOperation />
         <button className={styles.Button} onClick={(e) => showArray(true)}>Visualize!</button>
       </form>
     )
@@ -79,43 +115,31 @@ function Form() {
 }
 
 function ArrayDS() {
-
   const {size, isSubmitted, renderForm} = Form();
-  var doInsert = false;
-  var doDelete = false;
-  var doSearch = false;
+  
+  var doInsert;
+  var doDelete;
+  var doSearch;
 
-//   if (isSubmitted) {
-//     if (label === "insert") {
-//       doInsert = true;
-//     } else if (label === "delete") {
-//       doDelete = true;
-//     } else if (label === "search") {
-//       doSearch = true;
-//     }
-// }
+  if (isSubmitted) {
+    // if (operation === "insert") {
+    //   doInsert = true;
+    // } else if (operation === "delete") {
+    //   doDelete = true;
+    // } else if (operation === "search") {
+    //   doSearch = true;
+    // }
 
-// console.log(label);
-// console.log(doInsert);
-// console.log(doDelete);
-// console.log(doSearch);
-
+    console.log(isSubmitted);
+}
   return (
     <div className={styles.ArrayPage}>
         <Navbar />
         {renderForm}
         <div className={styles.Array}>
-          {isSubmitted && <Array size={size} />}
+          {isSubmitted && 
+          <Array size={size} />}
         </div>
-        {/* <div className={styles.Insert}>
-          {doInsert && <p>Inserting</p>}
-        </div>
-        <div className={styles.Delete}>
-          {doInsert && <p>Deleting</p>}
-        </div>
-        <div className={styles.Search}>
-          {doInsert && <p>Searching</p>}
-        </div> */}
       </div>
   );
 }

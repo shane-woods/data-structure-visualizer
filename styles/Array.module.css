@@ -1,12 +1,4 @@
 
-.Cell {
-    border: 1px solid black;
-    display:table-cell;
-    min-height: 1em;
-    min-width: 1em;
-    text-align: center;
-    padding: 15px;
-}
 
 .Array {
     position: absolute;
