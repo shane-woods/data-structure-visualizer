@@ -4,37 +4,18 @@ import Navbar from '../components/navbar';
 
 function Cell(props) {
   const value = props.value;
-  const color = props.color;
-  const borderWidth = props.borderWidth;
   return (
-    <div className="Cell">
-      <style jsx> {`
-      .Cell {
-        border: ${borderWidth} solid ${color};
-        display:table-cell;
-        min-height: 1em;
-        min-width: 1em;
-        text-align: center;
-        padding: 15px;
-      }
-      `}</style>
+    <div className={styles.Cell}>
       {value}
     </div>
   );
 }
 
-function Array(props) {
+function Arr(props) {
   const size = props.size;
-  const array = [];
-  array.length = 0;
-  for (let i = 0; i < size; i++) {
-    array[i] = <Cell 
-    color="red" 
-    value={Math.floor(Math.random() * 50)} 
-    borderWidth="1px"
-    />;
-  }
-
+  const rand = Array(size).fill().map(() => Math.floor(Math.random() * 50));
+  console.log(rand);
+  const array = rand.map((value) => <Cell value={value} />);
   return (
     <div className={styles.Array}>
       {array}
@@ -59,26 +40,36 @@ function SelectOperation() {
     },
   ];
 
-   const setOp = useCallback (
-      (e) => {
+   function setOp(e) {
         e.preventDefault();
         setOperation(e.target.value);
-      },
-      [operation]
-   );
+   }
 
-  return (
+
+  return {
+    operation,
+    renderSelect:
     <select onChange={setOp}>
         {operations.map((option) => (
           <option value={option.value}>{option.label}</option>
         ))}
     </select>
-  );
+  }
+  
+}
+
+function Label(props) {
+  return (
+    <label className={styles.Label}>
+      {props.label}
+    </label>
+  )
 }
 
 function Form() {
   const [size, setSize] = useState(5);
   const [isSubmitted, showArray] = useState();
+  const {operation, renderSelect} = SelectOperation();
 
   useEffect(() =>  {
     showArray(true);
@@ -96,9 +87,10 @@ function Form() {
   return {
     size, 
     isSubmitted,
+    operation,
     renderForm:(
       <form className={styles.Form} onSubmit={handleSubmit}>
-        <label className={styles.Label}>Array Size:</label>
+        <Label label="Array size: " />
         <input 
         type="text"
         required
@@ -106,8 +98,8 @@ function Form() {
         onChange={handleChange}
         className={styles.sizeInput}
         /> 
-        <label className={styles.Label}>Choose an operation: </label>
-        <SelectOperation />
+        <Label label="Choose an operation:" />
+        {renderSelect}
         <button className={styles.Button} onClick={(e) => showArray(true)}>Visualize!</button>
       </form>
     )
@@ -115,30 +107,15 @@ function Form() {
 }
 
 function ArrayDS() {
-  const {size, isSubmitted, renderForm} = Form();
-  
-  var doInsert;
-  var doDelete;
-  var doSearch;
-
-  if (isSubmitted) {
-    // if (operation === "insert") {
-    //   doInsert = true;
-    // } else if (operation === "delete") {
-    //   doDelete = true;
-    // } else if (operation === "search") {
-    //   doSearch = true;
-    // }
-
-    console.log(isSubmitted);
-}
+  const {size, isSubmitted, operation, renderForm} = Form();
+  console.log(operation);
   return (
     <div className={styles.ArrayPage}>
         <Navbar />
         {renderForm}
         <div className={styles.Array}>
           {isSubmitted && 
-          <Array size={size} />}
+          <Arr size={size} />}
         </div>
       </div>
   );
@@ -146,7 +123,6 @@ function ArrayDS() {
 
  
 export default ArrayDS;
-
 
 
 

@@ -1,4 +1,11 @@
-
+.Cell {
+    border: 1px solid black;
+    display:table-cell;
+    min-height: 1em;
+    min-width: 1em;
+    text-align: center;
+    padding: 15px;
+  }
 
 .Array {
     position: absolute;
@@ -13,7 +20,10 @@
 }
 
 .Label {
-    margin-left: 1em;
+    display: inline-flex;
+    top: 12.5%;
+    margin-left: .5em;
+    margin-right: .25em;
 }
 
 .sizeInput {
@@ -21,5 +31,5 @@
 }
 
 .Button {
-    margin: 0 3px;
+    margin: 0 .5em;
 }
