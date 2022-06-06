@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ReactComponent as CaretIcon } from '../public/icons/caret.svg'
 import styles from '../styles/Navbar.module.css'
 
-function Navbar() {
+const Navbar = () => {
     return (
       <nav className={styles.Navbar}>
         <ul>
@@ -16,7 +16,7 @@ function Navbar() {
     );
 }
 
-function Navitem(props) {
+const Navitem = (props) => {
   const path = props.path;
   return (
     <li className={styles.label}>
