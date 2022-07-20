@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from 'next/head'
 import arrayIMG from '../public/images/array.png'
 import linkedlistIMG from '../public/images/linkedlist.png'
 import bstIMG from '../public/images/bst.png'
+import PageLink from '../components/PageLink'
 import Navbar from '../components/navbar';
 import styles from '../styles/Home.module.css'
 
@@ -11,47 +11,19 @@ import styles from '../styles/Home.module.css'
 const Home = () => {
   return ( 
     <div className={styles.Home}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap" rel="stylesheet"/>
+      </Head>
       <Navbar />
-      <div className={styles.Homepage}>
-        <h1>Data Structure & Algorithm Visualizer</h1>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <Link href="/array">
-                  <a> 
-                    <div className={styles.dsIMG}>
-                      <Image src={arrayIMG} alt="Image of an Array"/>
-                    </div>
-                  </a>
-                </Link>
-                <p className={styles.IMGcap}>Array</p>
-              </td>
-              <td>
-                <Link href="#">
-                  <a>
-                    <div className={styles.dsIMG}>
-                      <Image src={linkedlistIMG} alt="Image of a Linked List"/>
-                    </div>
-                  </a>
-                </Link>
-                <p className={styles.IMGcap}>Linked List</p>
-              </td>
-              <td>
-                <Link href="#">
-                  <a>
-                    <div className={styles.dsIMG}>
-                      <Image src={bstIMG} alt="Image of a Binary Search Tree"/>
-                    </div>
-                  </a>
-                </Link>
-                <p className={styles.IMGcap}>Binary Search Tree</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <h1 className={styles.Title}>Data Structure & Algorithm Visualizer</h1>
+      <div className={styles.Table}>
+        <PageLink link="array" image={arrayIMG} ds="Array" />
+        <PageLink link="linked" image={linkedlistIMG} ds="Linked List" />
+        <PageLink link="bst" image={bstIMG} ds="Binary Search Tree" />
       </div>
-    </div>
+      </div>
    );
 }
 

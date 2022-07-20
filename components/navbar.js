@@ -1,12 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import { ReactComponent as CaretIcon } from '../public/icons/caret.svg'
 import styles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
       <nav className={styles.Navbar}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap" rel="stylesheet"/>
+      </head>
         <ul>
           <Navitem label="Projects" path="projects"/>
           <Navitem label="About" path="about"/>

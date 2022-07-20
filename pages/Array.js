@@ -92,8 +92,13 @@ const Form = () => {
     
   return (
     <div className={styles.ArrayPage}>
-        <Navbar />
-        <Form />
+      <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap" rel="stylesheet"/>
+      </head>
+      <Navbar />
+      <Form />
     </div>
   );
 }
