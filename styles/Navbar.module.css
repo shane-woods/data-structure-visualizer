@@ -1,32 +1,24 @@
-
 .Navbar {
-  margin: 0;
-  padding: 0;
-  font-size: calc(5px + 2vmin);
-  text-align: center;
-  background-color:rgb(75, 75, 75);
-  width: 100%;
+  background-color: #455073;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid white;
 }
 
-.Navbar ul {
-  padding-left:0;
-  padding-top:.5em;
-  padding-bottom:.5em;
-  margin-top:0;
-  margin-bottom:0;
+
+.logo {
+  display: flex;
+}
+
+.logo > p {
+  padding: 15px 10px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
   font-family: 'Encode Sans', sans-serif;
-} 
-  
-.Navbar a {
-  padding: 10px;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.label {
-  height: 50px;
-  font-size: 3vh;
-  display: inline-block;
-  margin: 5 5;
+  border: 1px solid transparent;
+  border-radius: 7.5px;
+  margin: 10px 10px;
+  transition:0.25s;
 }
