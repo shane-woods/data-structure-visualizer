@@ -5,7 +5,6 @@
 
 .cell {
     display: flex;
-    border: 1px solid black;
     border-radius: 1px;
     text-align: center;
     padding:25px;
