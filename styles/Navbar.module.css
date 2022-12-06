@@ -12,7 +12,7 @@
   display: flex;
 }
 
-.logo > p {
+.logo > a {
   padding: 15px 10px;
   color: rgb(255, 255, 255);
   font-size: 20px;
@@ -21,4 +21,5 @@
   border-radius: 7.5px;
   margin: 10px 10px;
   transition:0.25s;
+  text-decoration: none;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback} from 'react'
 import styles from '../styles/Array.module.css'
 import Navbar from '../components/navbar';
+import Head from 'next/head'
 
 let initialArray = [
   {value:1,},
@@ -13,9 +14,14 @@ let initialArray = [
 const Cell = (props) => {
   let value = props.value;
   let index = props.index;
+  let color = props.color;
   const style = {
+    border: "1px solid",
+    borderColor: color,
     display: "flex",
-    borderRadius: "1px",
+    borderRadius: "5px",
+    borderCollapse: "collapse",
+    backgroundColor:"white",
     textAlign: "center",
     padding:"25px",
     fontSize: "large"
@@ -33,7 +39,7 @@ const Arr = (props) => {
     <div className={styles.array}>
       {
         array.map((cell, index) => (
-          <Cell value={cell.value} index={index}/>
+          <Cell value={cell.value} index={index} color="black"/>
         ))
       }
     </div>
@@ -137,7 +143,6 @@ const Form = () => {
       <button type="button" name="execute" onClick={handleClick}>Execute</button>
     </form>
     {form.operation === "choose an operation" ? <Arr array={array}/> : null}
-    <p>{form.size}{' '}{form.operation}</p>
     </div>
   );
 }
@@ -145,6 +150,11 @@ const Form = () => {
 const ArrayDS = () => {
   return (
     <div className={styles.ArrayPage}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap" rel="stylesheet"/>
+      </Head>
       <Navbar />
       <Form />
     </div>

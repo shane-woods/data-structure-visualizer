@@ -1,15 +1,6 @@
 .ArrayPage {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100%;
 }
-
-.cell {
-    display: flex;
-    border-radius: 1px;
-    text-align: center;
-    padding:25px;
-    font-size: large;
-  }
 
 .array {
     display: flex;

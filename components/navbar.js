@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className={styles.Navbar}>
       <div className={styles.logo}>
-        <p>Data Structure Visualizer</p>
+        <a href="/">Data Structure Visualizer</a>
       </div>
     </nav>
   )
